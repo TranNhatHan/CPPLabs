@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <unistd.h>
+// #include <windows.h>
 using namespace std;
 
 static void exercise_one() {
@@ -150,11 +152,80 @@ static void rock_scissors_paper() {
 	}
 }
 
+static void homework_one() {
+	for (int i = 10; i >= 0; i--) {
+		cout<<i<<endl;
+		sleep(1);
+	}
+	cout<<"Thunderbird are go!\n";
+}
+
+static void homework_two() {
+	float oz;
+	cout << "The amount of ounces you would like to convert to grams: ";
+	cin >> oz;
+	cout << "It is " << oz*28.3495 << " grams\n";
+	cout << "This is the conversion table\n";
+	cout << "Ounces\t" << "Gram\n";
+	for (int i = 1; i <= 10; i++) {
+		cout << i << "\t" << i*28.3495 << endl;
+	}
+}
+
+static void homework_three() {
+	float USD_to_GBP_conversion_rate;
+	cout << "What is the convesion rate: ";
+	cin >> USD_to_GBP_conversion_rate;
+	cout << "This is the conversion table\n";
+	cout << "USD\t" << "GBP\n"; 
+	for (int i = 1; true; i++) {
+		if (i*USD_to_GBP_conversion_rate>=10) {
+			break;
+		}
+		cout << i << "\t" << i*USD_to_GBP_conversion_rate << endl;
+	}
+}
+
+static void homework_four() {
+	while (true) {
+		int number;
+		cout << "Enter a integer number: ";
+		cin >> number;
+		if (number == 0) {
+			break;
+		}
+		cout << "This is the " << number << " times table\n";
+		for (int i = 1; i <= 10; i++) {
+			cout << number << " * " << i << " = " << number*i << endl;
+		}
+	}
+	
+
+}
+
+static void homework_five() {
+	int age;
+	cout << "What is your age: ";
+	cin >> age;
+	if (age <= 40 && age >= 18) {
+		for (int i = 1; i <= 5; i++) {
+			cout << "You will be " << age + i*10 << " in the next " << i*10 << " years\n";
+		}
+	} else {
+		cout << "This is not for you!\n";
+	}
+}
+
 void lab_two() {
 	// exercise_one();
 	// exercise_two();
 	// exercise_three();
 	// exercise_four();
 	// exercise_five();
-	rock_scissors_paper();
+	// rock_scissors_paper();
+	// homework_one();
+	// homework_two();
+	// homework_three();
+	// homework_four();
+	homework_five();
 }
