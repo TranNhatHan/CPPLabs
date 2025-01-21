@@ -2,17 +2,19 @@
 #include <iostream>
 using namespace std;
 
-static float ASimpleFunction(int a, int b, int c, int d, int y) {
+static float a_simple_function(int a, int b, int c, int d, int y)
+{
 	float x;
 	x = y + (static_cast<float>(a) + b) * 2 / (c - d);
 	return x;
 }
 
-static double BMI(double weight, double height) {
+static double bmi(double weight, double height)
+{
 	return weight / (height * height);
 }
 
-void LabOne() {
+void lab_one() {
 	int x = 0;
 	double y = 42.5;
 	bool Answer = false;
@@ -27,8 +29,8 @@ void LabOne() {
 	cout << "The value of y is " << y << endl;
 	cout << "The value of Answer is " << Answer << endl;
 	cout << "The xalue of xx is " << xx << endl;
-	cout << "The result of that given function is: " << ASimpleFunction(6, 4, 7, 2, 3) << endl;
+	cout << "The result of that given function is: " << a_simple_function(6, 4, 7, 2, 3) << endl;
 	cout << int_number + float_number << endl;
 	cout << int_number + 4.5 << endl;
-	cout << "My BMI value is: " << BMI(47, 1.685) << endl;
+	cout << "My BMI value is: " << bmi(47, 1.685) << endl;
 }

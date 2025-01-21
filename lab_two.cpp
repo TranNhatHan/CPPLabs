@@ -4,10 +4,6 @@
 #include <ctime>
 using namespace std;
 
-static void hello() {
-	cout << "Hi";
-}
-
 static void exercise_one() {
 	int a_integer = 10;
 	if (a_integer < 10) {
@@ -95,8 +91,8 @@ static void exercise_five() {
 	srand(time(0));
 	int random_number = rand() % 21;
 	cout << "Count, random, user\n";
-	for (int i = 0; i < 20; i++) {
-		cout << i + 1 << "\t";
+	for (int i = 1; i <= 20; i++) {
+		cout << i << "\t";
 		if (i == random_number) {
 			cout << ".yes...........\n";
 		}
@@ -113,10 +109,14 @@ static void exercise_five() {
 
 }
 
+static void rock_scissors_paper() {
+	int player
+}
+
 void lab_two() {
-	exercise_one();
-	exercise_two();
-	exercise_three();
-	exercise_four();
-	exercise_five();
+	// exercise_one();
+	// exercise_two();
+	// exercise_three();
+	// exercise_four();
+	// exercise_five();
 }
