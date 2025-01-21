@@ -109,8 +109,38 @@ static void exercise_five() {
 
 }
 
+static int take_player_input() {
+	cout << "Enter 0 for scissors, 1 for paper, 2 for rock: ";
+	int input;
+	cin >> input;
+	return input;
+} 
+
 static void rock_scissors_paper() {
-	int player
+	const int SCISSORS = 0;
+	const int PAPER = 1;
+	const int STONE = 2;
+	char choices[4][10] = {"Scissors", "Paper", "Rock"};
+	char winlose[2][10] = { "BEATS" , "LOSES TO"};
+	while (true) {
+		int player_input = take_player_input();
+		srand(time(0));
+		int bot_input = rand() % 3;
+		int result = player_input - bot_input;
+		cout << "Player chose " << choices[player_input] << endl;
+		cout << "Bot chose " << choices[bot_input] << endl;
+		switch (result) {
+			case 0:
+				cout<<"Draw! One more time!\n";
+				continue;
+			case 1 || -2:
+				cout << choices[player_input] << " " << winlose[1] << " " << choices[bot_input] << endl;
+				cout << "You lose\n";
+			default:
+				cout << choices[player_input] << " " << winlose[0] << " " << choices[bot_input] << endl;
+				cout << "You win\n";
+		}
+	}
 }
 
 void lab_two() {
@@ -119,4 +149,5 @@ void lab_two() {
 	// exercise_three();
 	// exercise_four();
 	// exercise_five();
+	rock_scissors_paper();
 }
