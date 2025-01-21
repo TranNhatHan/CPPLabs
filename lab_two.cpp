@@ -110,20 +110,25 @@ static void exercise_five() {
 }
 
 static int take_player_input() {
-	cout << "Enter 0 for scissors, 1 for paper, 2 for rock: ";
+	cout << "Enter 1 for scissors, 2 for paper, 3 for rock (0 to exit the program): ";
 	int input;
 	cin >> input;
+	if (input < 0 || input > 3) {
+		cout << "Invalid input, please try again\n";
+		return take_player_input();
+	}
 	return input;
 } 
 
 static void rock_scissors_paper() {
-	const int SCISSORS = 0;
-	const int PAPER = 1;
-	const int STONE = 2;
 	char choices[4][10] = {"Scissors", "Paper", "Rock"};
 	char winlose[2][10] = { "BEATS" , "LOSES TO"};
 	while (true) {
 		int player_input = take_player_input();
+		if (player_input == 0) {
+			break;
+		}
+		player_input--;
 		srand(time(0));
 		int bot_input = rand() % 3;
 		int result = player_input - bot_input;
@@ -133,12 +138,14 @@ static void rock_scissors_paper() {
 			case 0:
 				cout<<"Draw! One more time!\n";
 				continue;
-			case 1 || -2:
+			case 1:
+			case -2:
 				cout << choices[player_input] << " " << winlose[1] << " " << choices[bot_input] << endl;
-				cout << "You lose\n";
+				cout << "You lose!\n";
+				continue;
 			default:
 				cout << choices[player_input] << " " << winlose[0] << " " << choices[bot_input] << endl;
-				cout << "You win\n";
+				cout << "You win!\n";
 		}
 	}
 }
