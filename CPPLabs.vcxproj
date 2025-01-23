@@ -130,11 +130,11 @@
   <ItemGroup>
     <ClCompile Include="cpp_labs.cpp" />
     <ClCompile Include="lab_one.cpp" />
+    <ClCompile Include="lab_three.cpp" />
     <ClCompile Include="lab_two.cpp" />
-    <ClCompile Include="rock_scissor_paper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="labs.h" />
+    <ClInclude Include="labs.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

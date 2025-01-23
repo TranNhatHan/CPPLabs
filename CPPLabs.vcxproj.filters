@@ -24,12 +24,12 @@
     <ClCompile Include="lab_two.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rock_scissor_paper.cpp">
+    <ClCompile Include="lab_three.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="labs.h">
+    <ClInclude Include="labs.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

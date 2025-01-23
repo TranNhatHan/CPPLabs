@@ -1,6 +1,6 @@
 # Define the compiler and flags
 CXX = g++
-# CXXFLAGS = -Wall -Wextra -std=c++17
+# CXXFLAGS = -Wall -Wextra -std=c++20
 
 # Automatically determine the target executable name as the directory name
 TARGET = $(notdir $(CURDIR))

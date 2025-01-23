@@ -1,4 +1,4 @@
-#include "labs.h"
+#include "labs.hpp"
 #include <iostream>
 using namespace std;
 
