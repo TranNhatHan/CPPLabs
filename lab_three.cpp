@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <limits> 
+#include <cmath>
 using namespace std;
 
 static int get_pollution_level(int counter) {
@@ -63,21 +65,21 @@ static void exercise_two() {
   float number = float_numbers[0];
   float mode = number;
   int count = 1;
-  int count_mode = 1;
+  int highest_mode = 1;
 
   for (int i = 1; i < sizeof(float_numbers) / sizeof(float_numbers[0]); i++) {
     if (float_numbers[i] == number) {
       ++count;
     } else {
-      if (count > count_mode) {
-        count_mode = count;
+      if (count > highest_mode) {
+        highest_mode = count;
         mode = number;
       }
       count = 1;
       number = float_numbers[i];
     }
   }
-  if (count_mode == 1) {
+  if (highest_mode == 1) {
     cout << "There is no mode value of this array\n";
   } else {
     cout << "Mode of the values: " << mode << endl;
@@ -123,34 +125,43 @@ static void exercise_three() {
   display_big(int_array, 10, 40);
 }
 
+struct Size {
+  float height;
+  float weight;
+  float length;
+};
+
 struct Pet {
   string name;
   int age;
   int type;
+  Size size;
 };
+
+static void ask_pet(Pet *my_pet_ptr) {
+  cout << "What is the name of your pet? ";
+  cin >> my_pet_ptr->name;
+  cout << "What is the age of your pet? ";
+  cin >> my_pet_ptr->age;
+  cout << "What is the type of your pet (1: Cat, 2: Dog, 3: Bird)? ";
+  cin >> my_pet_ptr->type;
+  cout << "What is the height of your pet? ";
+  cin >> my_pet_ptr->size.height;
+  cout << "What is the weight of your pet? ";
+  cin >> my_pet_ptr->size.weight;
+  cout << "What is the length of your pet? ";
+  cin >> my_pet_ptr->size.length;
+}
 
 static void exercise_four() {
   Pet my_pet;
-  cout << "What is the name of your pet? ";
-  cin >> my_pet.name;
-  cout << "What is the age of your pet? ";
-  cin >> my_pet.age;
-  cout << "What is the type of your pet (1: Cat, 2: Dog, 3: Bird)? ";
-  cin >> my_pet.type;
   string pet_types[]{"Cat", "Dog", "Bird"};
+  ask_pet(&my_pet);
   cout << "Your " << pet_types[my_pet.type - 1] << " is called " << my_pet.name
-       << " and is " << my_pet.age << string((my_pet.age==1) ? " year old\n" : " years old\n");
+       << " and is " << my_pet.age << string((my_pet.age==1) ? " year old\n" : " years old") 
+       << " and it is " << my_pet.size.length << "cm long, " << my_pet.size.weight << "kg and " 
+       << my_pet.size.height << "cm tall\n";
 }
-
-// static void draw_bar_chart(int arr[], int size) {
-//     for (int i = 0; i < size; i++) {
-//         cout << i + 2 << ": ";
-//         for (int j = 0; j < arr[i]; j++) {
-//             cout << "*";
-//         }
-//         cout << " (" << arr[i] << ")" << endl;
-//     }
-// }
 
 void bar_chart(int arr[], int size) {
     int max_height = *max_element(arr, arr + size);
@@ -180,14 +191,17 @@ void bar_chart(int arr[], int size) {
 }
 
 struct Dice_result {
+  int dice_one;
+  int dice_two;
+  int total;
 };
 
-static void role_the_dices() {
+static void role_the_dices(int throwing_times = 100) {
   int results[6][6]{};
   int dice_one, dice_two;
   int total_results[11]{};
   int total;
-  int throwing_times = 100;
+  // int throwing_times = 100;
   cout << "Roll the dices " << throwing_times << " times\n";
   for (int i = 0; i < throwing_times; i++) {
     dice_one = rand() % 6 + 1;
@@ -217,12 +231,23 @@ static void role_the_dices() {
   }
   cout << "" << endl;
   bar_chart(total_results, 11);
+  Dice_result dice_results[throwing_times];
+  for (int i = 0; i < throwing_times; i++) {
+    dice_one = rand() % 6 + 1;
+    dice_two = rand() % 6 + 1;
+    dice_results[i].dice_one = dice_one;
+    dice_results[i].dice_two = dice_two;
+    dice_results[i].total = dice_one + dice_two;
+  }
+  for (int i = 0; i < throwing_times; i++) {
+    cout << dice_results[i].dice_one << " " << dice_results[i].dice_two << " " << dice_results[i].total << endl;
+  }
 }
 
 void lab_three() {
   // exercise_one();
   // exercise_two();
   // exercise_three();
-  exercise_four();
-  // role_the_dices();
+  // exercise_four();
+  role_the_dices(50);
 }
