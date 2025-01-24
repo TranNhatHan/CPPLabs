@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 static int get_pollution_level(int counter) {
@@ -138,32 +139,90 @@ static void exercise_four() {
   cin >> my_pet.type;
   string pet_types[]{"Cat", "Dog", "Bird"};
   cout << "Your " << pet_types[my_pet.type - 1] << " is called " << my_pet.name
-       << " and is " << my_pet.age << " years old\n";
+       << " and is " << my_pet.age << string((my_pet.age==1) ? " year old\n" : " years old\n");
 }
 
+// static void draw_bar_chart(int arr[], int size) {
+//     for (int i = 0; i < size; i++) {
+//         cout << i + 2 << ": ";
+//         for (int j = 0; j < arr[i]; j++) {
+//             cout << "*";
+//         }
+//         cout << " (" << arr[i] << ")" << endl;
+//     }
+// }
+
+void bar_chart(int arr[], int size) {
+    int max_height = *max_element(arr, arr + size);
+
+    const int width = 4;
+
+    for (int i = max_height; i > 0; i--) {
+        for (int j = 0; j < size; j++) {
+            if (arr[j] >= i) {
+                cout << setw(width) << "*";
+            } else {
+                cout << setw(width) << " ";
+            }
+        }
+        cout << endl;
+    }
+
+    for (int i = 0; i < size; i++) {
+        cout << setw(width) << "-";
+    }
+    cout << endl;
+
+    for (int i = 0; i < size; i++) {
+        cout << setw(width) << i + 2;
+    }
+    cout << endl;
+}
+
+struct Dice_result {
+};
+
 static void role_the_dices() {
-  int result[6][6]{};
+  int results[6][6]{};
   int dice_one, dice_two;
-  cout << "Roll the dices 100 times\n";
-  for (int i = 0; i < 100; i++) {
+  int total_results[11]{};
+  int total;
+  int throwing_times = 100;
+  cout << "Roll the dices " << throwing_times << " times\n";
+  for (int i = 0; i < throwing_times; i++) {
     dice_one = rand() % 6 + 1;
     dice_two = rand() % 6 + 1;
-    result[dice_one - 1][dice_two - 1]++;
+    total = dice_one + dice_two;
+    results[dice_one - 1][dice_two - 1]++;
+    total_results[total - 2]++;
   }
-  cout << "  1 2 3 4 5 6\n";
+  for (int i = 1; i <= 6; i++) {
+    cout << setw(3) << i;
+  }
+  cout << endl;
   for (int i = 0; i < 6; i++) {
-    cout << i;
+    cout << i + 1;
     for (int j = 0; j < 6; j++) {
-      cout << " " << result[i][j];
+      cout << setw(3) << results[i][j];
     }
     cout << endl;
   }
+  cout << "Dice totals\n";
+  for (int i = 2; i <= 12; i++) {
+    cout << setw(5) << i;
+  }
+  cout << "" << endl;
+  for (int i = 0; i < 11; i++) {
+    cout << setw(5) << total_results[i] ;
+  }
+  cout << "" << endl;
+  bar_chart(total_results, 11);
 }
 
 void lab_three() {
   // exercise_one();
-  exercise_two();
+  // exercise_two();
   // exercise_three();
-  // exercise_four();
-  role_the_dices();
+  exercise_four();
+  // role_the_dices();
 }
