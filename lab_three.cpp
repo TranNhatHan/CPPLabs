@@ -196,12 +196,12 @@ struct Dice_result {
   int total;
 };
 
-static void role_the_dices(int throwing_times = 100) {
+static void role_the_dices() {
   int results[6][6]{};
   int dice_one, dice_two;
   int total_results[11]{};
   int total;
-  // int throwing_times = 100;
+  const int throwing_times = 100;
   cout << "Roll the dices " << throwing_times << " times\n";
   for (int i = 0; i < throwing_times; i++) {
     dice_one = rand() % 6 + 1;
