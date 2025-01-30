@@ -244,10 +244,86 @@ static void role_the_dices(int throwing_times = 100) {
   }
 }
 
+static void program_four() {
+  char vehicle_type;
+  cout << "Input type of vehicle (c for car, b for bus and t for truck): ";
+  cin >> vehicle_type;
+  int hours;
+  cout << "Input the number of hours: ";
+  cin >> hours;
+  float charge;
+  switch (vehicle_type) {
+    case 'c':
+      charge = hours*2.0;
+      break;
+    case 'b':
+      charge = hours*3.0;
+      break;
+    case 't':
+      charge = hours*4.0;
+      break;
+  }
+
+  cout << "Your parking price is £" << charge << endl;
+}
+
+static void program_nine() {
+  bool is_leap_year;
+  int year;
+  cout << "Enter a year: ";
+  cin >> year;
+  is_leap_year = (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
+  cout << (is_leap_year ? "Leap year" : "Not a leap year") << endl;
+}
+
+static void program_ten() {
+  int score;
+  cout << "Enter a sroce between 0 and 100: ";
+  cin >> score;
+  int last_digit = score % 10;
+  string grade;
+  switch (score / 10)
+  {
+    case 10: 
+      grade = "A";
+      cout << "Grade: A+\n";
+      return;
+    case 9 : 
+      grade = 'A';
+      break;
+    case 8 : 
+      grade = 'B';
+      break;
+    case 7 : 
+      grade = 'C';
+      break;
+    case 6 : 
+      grade = 'D';
+      break;
+    default: 
+      grade = 'F';
+  }
+  if (last_digit >= 8) {
+    cout << "Grade: " << grade << "+";
+  } else if (last_digit >= 4) {
+    cout << "Grade: " << grade;
+  } else {
+    cout << "Grade: " << grade << "-";
+  }
+  cout << endl;
+}
+
+static void program_thirteen() {
+
+}
+
 void lab_three() {
   // exercise_one();
   // exercise_two();
   // exercise_three();
   // exercise_four();
-  role_the_dices(50);
+  // role_the_dices(50);
+  // program_four();
+  // program_nine();
+  program_ten();
 }
