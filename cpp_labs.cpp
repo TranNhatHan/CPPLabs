@@ -4,7 +4,8 @@ int main() {
   // lab_one();
   // lab_two();
   //lab_three();
-	lab_four();
+	//lab_four();
+	lab_six();
   return 0;
 }
 

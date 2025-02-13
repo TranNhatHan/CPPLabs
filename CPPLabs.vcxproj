@@ -131,6 +131,7 @@
     <ClCompile Include="cpp_labs.cpp" />
     <ClCompile Include="lab_four.cpp" />
     <ClCompile Include="lab_one.cpp" />
+    <ClCompile Include="lab_six.cpp" />
     <ClCompile Include="lab_three.cpp" />
     <ClCompile Include="lab_two.cpp" />
   </ItemGroup>
